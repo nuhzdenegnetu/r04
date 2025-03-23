@@ -1,54 +1,28 @@
-# React + TypeScript + Vite
+# Домашнє завдання №4
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Цей проєкт представляє собою React-додаток, у якому використовується асинхронне отримання повідомлення за допомогою `Promise`.
 
-Currently, two official plugins are available:
+## Опис файлів
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1. `fetchMessage.tsx`
+Функція `fetchMessage` повертає `Promise`, який вирішується рядком `"Hello from Promise!"` через 2 секунди.
 
-## Expanding the ESLint configuration
+### 2. `MessageComponent.tsx`
+Функціональний компонент `MessageComponent`, який приймає `Promise<string>` і використовує хук `use` для отримання даних, а потім відображає повідомлення.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 3. `App.tsx`
+Головний компонент `App`, який запитує повідомлення за допомогою `fetchMessage` і передає його в `MessageComponent`.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Як запустити
+1. Встановіть залежності:
+   ```sh
+   npm install
+   ```
+2. Запустіть проєкт:
+   ```sh
+   npm start
+   ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Додаток відобразить повідомлення після завантаження промісу.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+---
